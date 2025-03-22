@@ -6,7 +6,6 @@ import axios from "axios"; // Import axios for HTTP requests
 import * as cheerio from "cheerio"; // Correct import for Cheerio
 import { scrapeAMLArticlesWithPuppeteer } from "./controllers/puppeteerScrapingController.js"; // Import Puppeteer scraper
 
-
 // Import MongoDB connection
 import connectDB from "./config/db.js";
 
@@ -14,6 +13,7 @@ import connectDB from "./config/db.js";
 import fraudRoutes from "./routes/fraudRoutes.js";
 import ruleRoutes from "./routes/ruleRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import gmailRoutes from "./routes/gmailRoutes.js"; // Import Gmail routes
 
 // Import Twitter Scraping Controller and Rule Controller
 import { fetchAMLTweets } from './controllers/twitterScrapingController.js';
@@ -35,6 +35,7 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/fraud", fraudRoutes);
 app.use("/api/rules", ruleRoutes);
+app.use('/api/gmail', gmailRoutes); // Added Gmail Routes
 
 // Web Scraping with Cheerio (Static HTML Parsing)
 const scrapeAMLArticlesWithCheerio = async () => {
